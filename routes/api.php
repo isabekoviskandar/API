@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PostController;
 use Illuminate\Http\Request;
@@ -10,7 +11,7 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::get('/category' , [CategoryController::class, 'index']);
-Route::get('/category/{category}' , [CategoryController::class , 'show']);
+Route::get('/category/{category}' , [CategoryController::class , 'show'])->middleware('admin');
 Route::post('/category' , [CategoryController::class, 'store']);
 Route::put('/category/{catgeory}' , [CategoryController::class , 'update']);
 Route::delete('/category/{category}', [CategoryController::class , 'delete']);
